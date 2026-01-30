@@ -1,0 +1,9 @@
+
+User       : divya
+Driver     : Ravi
+Vehicle    : Car
+Source     : Chennai
+Destination: Bangalore
+Fare       : ₹ 7000
+Status     : Trip Ended
+Feedback   : its good 

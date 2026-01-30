@@ -1,0 +1,4 @@
+Name: Divya
+Age: 25
+Registered Courses: Maths, History
+Total Courses: 2

@@ -1,0 +1,6 @@
+Total Storage: 458 GB
+Used Storage: 209 GB
+Free Storage: 249 GB
+
+
+Backup created:, C:\Users\divya\Desktop\DAY-4\backup\data_backup_20260130_114307.txt

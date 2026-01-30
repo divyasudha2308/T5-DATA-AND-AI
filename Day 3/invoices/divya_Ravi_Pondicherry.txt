@@ -1,0 +1,9 @@
+
+User       : divya
+Driver     : Ravi
+Vehicle    : Auto
+Source     : Chennai
+Destination: Pondicherry
+Fare       : ₹ 2250
+Status     : Trip Ended
+Feedback   : good

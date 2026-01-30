@@ -1,0 +1,4 @@
+Name: Aditri
+Age: 21
+Registered Courses: pharamcy, arts, Computers
+Total Courses: 3

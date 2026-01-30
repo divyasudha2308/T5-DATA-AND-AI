@@ -1,0 +1,7 @@
+--- File Management Report for: C:/Users/divya/Desktop/filemanager ---
+Moved: Ep-9 Pipeline Awakens (1).pdf -> PDF/
+Moved: major_project_team_9[1].docx -> Documents/
+Moved: marks new.jpg -> Images/
+Total files organized: 3
+Cleaned up text too
+

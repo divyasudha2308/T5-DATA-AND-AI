@@ -1,0 +1,4 @@
+Name: Varshitha
+Age: 29
+Registered Courses: psychology, arts, honours
+Total Courses: 3

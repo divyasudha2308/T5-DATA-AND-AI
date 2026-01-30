@@ -1,0 +1,12 @@
+
+--- UBER TRIP INVOICE ---
+
+User       : divya
+Phone      : 9492287323
+Driver     : Ravi
+Vehicle    : Auto
+Source     : Chennai
+Destination: Bangalore
+Fare       : ₹ 5250
+Status     : Trip Completed
+Feedback   : good
