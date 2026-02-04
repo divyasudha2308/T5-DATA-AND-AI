@@ -1,0 +1,8 @@
+id,name,department,location,salary
+101,Aditi,HR,Delhi,45000
+102,Shivam,Engineering,Bangalore,60000
+103,Rahul,Marketing,,52000
+104,Neha,Finance,Mumbai,58000
+105,Anita,Testing,Bangalore,45000
+106,Rahul,Development,Hyderabad,50000
+107,Suresh,Management,Chennai,70000
