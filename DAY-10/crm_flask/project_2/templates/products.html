@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex justify-between items-center mb-6">
+  <h2 class="text-3xl font-bold text-gray-800">Products</h2>
+  {% if current_user.is_admin %}
+  <a
+    href="/add-product"
+    class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded shadow"
+    >Add Product</a
+  >
+  {% endif %}
+</div>
+
+<form
+  method="GET"
+  class="mb-8 bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-4"
+>
+  <input
+    name="search"
+    class="flex-grow border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Search products..."
+  />
+  <input
+    name="price"
+    class="w-full md:w-48 border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Max price"
+  />
+  <button
+    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition duration-200"
+  >
+    Filter
+  </button>
+</form>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {% for p in products %}
+  <div
+    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+  >
+    <a
+      href="{{ url_for('product_detail', product_id=p.id) }}"
+      class="block h-48 overflow-hidden group"
+    >
+      <img
+        src="{{ url_for('static', filename='uploads/' + p.image) }}"
+        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+        alt="{{ p.name }}"
+      />
+    </a>
+    <div class="p-6 flex-grow flex flex-col">
+      <div class="flex justify-between items-start mb-2">
+        <a
+          href="{{ url_for('product_detail', product_id=p.id) }}"
+          class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+        >
+          {{ p.name }}
+        </a>
+        <span class="text-lg font-semibold text-green-600">₹{{ p.price }}</span>
+      </div>
+      <p class="text-gray-500 text-sm mb-4 flex-grow line-clamp-3">
+        {{ p.description if p.description else 'Start shopping now.' }}
+      </p>
+
+      <div class="flex gap-2 mt-auto">
+        <form
+          action="{{ url_for('add_to_cart', product_id=p.id) }}"
+          method="POST"
+          class="flex-grow"
+        >
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-200"
+          >
+            Add to Cart
+          </button>
+        </form>
+
+        <form
+          action="{{ url_for('delete_product', product_id=p.id) }}"
+          method="POST"
+        >
+          <button
+            type="submit"
+            class="bg-red-100 hover:bg-red-200 text-red-600 font-medium py-2 px-4 rounded transition duration-200 border border-red-200"
+            title="Delete Product"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

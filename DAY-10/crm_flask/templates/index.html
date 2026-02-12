@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello {{ name }}</h1>
+    {% if img %}
+    <!-- img variable contains path like static/uploads/filename.png -->
+    <img src="{{ url_for('static', filename=img.replace('static/', '')) }}" alt="Uploaded Image" style="max-width: 500px;">
+    {% endif %}
+</body>
+</html>

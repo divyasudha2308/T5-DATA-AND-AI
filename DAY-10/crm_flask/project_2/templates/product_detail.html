@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mx-auto px-4 py-8">
+  <div
+    class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
+  >
+    <!-- Image Section -->
+    <div class="md:w-1/2 h-96 md:h-auto relative">
+      <img
+        src="{{ url_for('static', filename='uploads/' + product.image) }}"
+        alt="{{ product.name }}"
+        class="w-full h-full object-cover absolute inset-0 transform hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+
+    <!-- Product Info Section -->
+    <div class="md:w-1/2 p-8 flex flex-col justify-between">
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-4xl font-extrabold text-gray-900 leading-tight">
+            {{ product.name }}
+          </h1>
+          <span
+            class="text-2xl font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full"
+          >
+            ₹{{ product.price }}
+          </span>
+        </div>
+
+        <div class="prose prose-lg text-gray-600 mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Description</h3>
+          <p class="leading-relaxed">{{ product.description }}</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 mt-8 pt-6 border-t border-gray-100">
+        <form
+          action="{{ url_for('add_to_cart', product_id=product.id) }}"
+          method="POST"
+          class="flex-grow md:flex-grow-0 md:w-1/2"
+        >
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            Add to Cart
+          </button>
+        </form>
+        <a
+          href="{{ url_for('products') }}"
+          class="text-gray-500 hover:text-gray-700 font-medium px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+        >
+          Back to Products
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

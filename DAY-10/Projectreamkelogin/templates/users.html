@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Users</title>
+  </head>
+  <body>
+    <h2>Users List</h2>
+
+    {% for user in users %}
+    <p>{{ user.username }} - {{ user.password }}</p>
+    {% endfor %}
+
+    <br />
+    <a href="/">Back</a>
+  </body>
+</html>
