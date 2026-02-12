@@ -8,21 +8,18 @@ ROUTES = {
     ("PUT", "/users"): "update_user",
     ("DELETE", "/users"): "delete_user",
 }
-
 USERS = [
-    {"id": 1, "name": "divya"},
-    {"id": 2, "name": "sudha"},
+    {"id": 1, "name": "Alice"},
+    {"id": 2, "name": "Bob"},
     {"id": 3, "name": "Charlie"},
 ]
 class SimpleAPI(BaseHTTPRequestHandler):
-    # Common JSON response helper
     def send_json(self, status=200, data=None):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
         if data is not None:
             self.wfile.write(json.dumps(data).encode())
-    # Extract query parameters
     def get_params(self):
         parsed = urlparse(self.path)
         return parse_qs(parsed.query)

@@ -9,7 +9,7 @@ ROUTES = {
     ("GET", "/products"): "get_products",
 }
 
-
+# Preloaded product list
 PRODUCTS = [
     {"id": 1, "name": "iPhone", "price": 1000},
     {"id": 2, "name": "Samsung Phone", "price": 800},
@@ -46,11 +46,11 @@ class SimpleAPI(BaseHTTPRequestHandler):
     def do_GET(self):
         self.handle_route()
 
-    
+    # ---------- CONTROLLER ----------
     def get_products(self):
         params = self.get_query_params()
 
-      
+        # Required: name
         name = params.get("name", [None])[0]
         if not name:
             self.send_json(400, {"error": "Missing required parameter: name"})
@@ -58,18 +58,18 @@ class SimpleAPI(BaseHTTPRequestHandler):
 
         name = name.lower()
 
-       
+        # Optional: max_price
         max_price_param = params.get("max_price", [None])[0]
         max_price = int(max_price_param) if max_price_param else None
 
-     
+        # Step 1: Filter by name (partial match)
         filtered = [p for p in PRODUCTS if name in p["name"].lower()]
 
-        
+        # Step 2: Filter by max_price if provided
         if max_price is not None:
             filtered = [p for p in filtered if p["price"] <= max_price]
 
-        
+        # Step 3: Return result
         self.send_json(200, {
             "count": len(filtered),
             "data": filtered
