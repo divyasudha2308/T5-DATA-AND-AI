@@ -1,0 +1,9 @@
+[
+    {
+        "pid": "2",
+        "name": "phone",
+        "price": 2333.0,
+        "stock": 1,
+        "type": "Electronics"
+    }
+]

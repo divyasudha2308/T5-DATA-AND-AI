@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart Lite</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Flipkart Lite</a>
+
+    <ul class="navbar-nav ms-auto">
+
+      {% if session.get("user") %}
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+
+        {% if session.get("role") == "admin" %}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="/logout">Logout</a>
+        </li>
+
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/login/user">User Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login/admin">Admin Login</a>
+        </li>
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-info">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

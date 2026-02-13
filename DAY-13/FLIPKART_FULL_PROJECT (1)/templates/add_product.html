@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Add Product</h3>
+
+<form method="POST" enctype="multipart/form-data">
+    <input class="form-control mb-2" name="name" placeholder="Product Name" required>
+    <input class="form-control mb-2" name="price" placeholder="Price" required>
+    <input class="form-control mb-2" type="file" name="image" required>
+    <button class="btn btn-success">Add</button>
+</form>
+
+{% endblock %}
